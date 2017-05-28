@@ -1,0 +1,4 @@
+com\springmvc\formvalidation\config\StudentInitializer.class
+com\springmvc\formvalidation\model\Student.class
+com\springmvc\formvalidation\config\StudentConfig.class
+com\springmvc\formvalidation\controller\StudentController.class
