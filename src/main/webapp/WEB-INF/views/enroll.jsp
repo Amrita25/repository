@@ -14,16 +14,29 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script>
+  $( function() {
+    $( "#datepicker" ).datepicker();
+  } );
+  
+  $( function() {
+	    $( ".widget input[type=submit], .widget a, .widget button" ).button();
+	    
+	  } );
+  </script>
 <title>Insert title here</title>
 
 </head>
 <body>
-<div>
-<c:set var="root" value="${pageContext.request.contextPath}"/>
-</div>
+<!-- <div>
+</div> -->
 	<div class="form-container">
 		<h1>Enrollment Form</h1>
-		<form:form action ="${root}/addnew/save" method="POST" modelAttribute="student"
+		<form:form action ="addnew" method="POST" modelAttribute="student"
 			class="form-horizontal">
 			<div class="row">
 				<div class="form-group col-md-12">
@@ -55,14 +68,14 @@
 
 			<div class="row">
 				<div class="form-group col-md-12">
-					<label class="col-md-3 control-lable" for="sex">Sex</label>
+					<label class="col-md-3 control-lable" for="gender">Gender</label>
 					<div class="col-md-7" class="form-control input-sm">
-						<form:radiobutton path="sex" value="M" />
+						<form:radiobutton path="gender" value="Male" />
 						Male
-						<form:radiobutton path="sex" value="F" />
+						<form:radiobutton path="gender" value="Female" />
 						Female
 						<div>
-							<form:errors path="sex"/>
+							<form:errors path="gender"/>
 						</div>
 					</div>
 				</div>
@@ -72,7 +85,7 @@
 					<label class="col-md-3 control-lable" for="dob">Date of
 						birth</label>
 					<div class="col-md-7">
-						<form:input type="text" path="dob" id="dob"
+						<form:input type="text" path="dob" id="datepicker"
 							class="form-control input-sm" />
 						<div class="has-error">
 							<form:errors path="dob" class="help-inline" />
@@ -97,7 +110,7 @@
 				<div class="form-group col-md-12">
 					<label class="col-md-3 control-lable" for="email">Subjects : </label>
 					<div class="col-md-7">
-						<form:select path="subjects" multiple="true">
+						<form:select path="subjects" multiple="false">
 						<form:options items="${subjectlist}"/>
 						</form:select>
 						<div class="has-error">
@@ -106,9 +119,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Submit</button>
-			</div>
+			<c:if test="${edit}">
+				<div class="widget">
+					<input type="submit" value="Update">
+				</div>
+			</c:if>
+			<c:if test="${!edit}">
+				<div class="widget">
+					<input type="submit" value="Submit">
+				</div>
+			</c:if>
 		</form:form>
 	</div>
 

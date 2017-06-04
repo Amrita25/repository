@@ -7,12 +7,12 @@ public class StudentInitializer extends AbstractAnnotationConfigDispatcherServle
 	@Override
 	protected Class<?>[] getRootConfigClasses() {
 		// TODO Auto-generated method stub
-		return new Class[]{StudentConfig.class};
+		return null;
 	}
 
 	@Override
 	protected Class<?>[] getServletConfigClasses() {
-		return null;
+		return new Class[]{StudentConfig.class};
 	}
 
 	@Override

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
  
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
@@ -12,13 +17,16 @@ import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.format.annotation.DateTimeFormat;
- 
+
+@Entity
 public class Student implements Serializable {
  
-    /**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
+	
+	@Id
+	@GeneratedValue
+	@Column(name="STUDENT_ID")
+	private long studentId;
 
 	@Size(min=3, max=30)
     @NotEmpty
@@ -28,25 +36,37 @@ public class Student implements Serializable {
     private String lastName;
  
     @NotEmpty
-    private String sex;
+    private String gender;
  
-    @DateTimeFormat(pattern="dd/MM/yyyy")
+    @DateTimeFormat(pattern="MM/dd/yyyy")
     @Past @NotNull
     private Date dob;
  
     @Email @NotEmpty
     private String email;
  
-    
+
     private String section;
  
-    
+
     private String country;
  
-    private boolean firstAttempt;
  
     @NotEmpty
+    @Transient
     private List<String> subjects = new ArrayList<String>();
+    
+    public Student(long studentId,String firstName,String lastName,String gender,Date dob,String email){
+    	this.studentId=studentId;
+    	this.firstName=firstName;
+    	this.lastName=lastName;
+    	this.gender=gender;
+    	this.email=email;
+    	this.dob=dob;
+    }
+    public Student(){
+    	
+    }
  
     public String getFirstName() {
         return firstName;
@@ -64,13 +84,7 @@ public class Student implements Serializable {
         this.lastName = lastName;
     }
  
-    public String getSex() {
-        return sex;
-    }
- 
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
+    
  
     public Date getDob() {
         return dob;
@@ -104,13 +118,7 @@ public class Student implements Serializable {
         this.country = country;
     }
  
-    public boolean isFirstAttempt() {
-        return firstAttempt;
-    }
- 
-    public void setFirstAttempt(boolean firstAttempt) {
-        this.firstAttempt = firstAttempt;
-    }
+    
  
     public List<String> getSubjects() {
         return subjects;
@@ -120,13 +128,24 @@ public class Student implements Serializable {
         this.subjects = subjects;
     }
  
-    @Override
+    public long getStudentId() {
+		return studentId;
+	}
+
+	public void setStudentId(long studentId) {
+		this.studentId = studentId;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	@Override
     public String toString() {
-        return "Student [firstName=" + firstName + ", lastName=" + lastName
-                + ", sex=" + sex + ", dob=" + dob + ", email=" + email
-                + ", section=" + section + ", country=" + country
-                + ", firstAttempt=" + firstAttempt + ", subjects=" + subjects
-                + "]";
+        return "abc";
     }
  
 }

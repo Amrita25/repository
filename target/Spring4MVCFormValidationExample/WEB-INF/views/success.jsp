@@ -10,14 +10,16 @@
 </head>
 <body>
 	<h1 align="center">Successfully registered</h1>
-
+<%-- <c:set var="root" value="${pageContext.request.contextPath}"/> --%>
 	
 		<table>
 			<tr>
 				<td>${msg}</td>
 				
 			</tr>
-		</table>
+
+		</table></br>
+		Go Back To <a href="<c:url value='list'/>">List Of All Students</a>
 
 
 </body>

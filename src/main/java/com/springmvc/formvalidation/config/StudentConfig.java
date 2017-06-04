@@ -10,9 +10,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
+import com.springmvc.formvalidation.service.StudentService;
+import com.springmvc.formvalidation.service.StudentServiceImpl;
+import com.springmvc.formvalidation.dao.*;
+
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.springmvc.formvalidation")
+@ComponentScan(basePackages="com.springmvc.formvalidation")
 public class StudentConfig {
 	
 	@Bean

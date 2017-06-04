@@ -1,4 +1,9 @@
 com\springmvc\formvalidation\config\StudentInitializer.class
+com\springmvc\formvalidation\service\StudentServiceImpl.class
+com\springmvc\formvalidation\service\StudentService.class
 com\springmvc\formvalidation\model\Student.class
+com\springmvc\formvalidation\dao\StudentJpaDao.class
+com\springmvc\formvalidation\dao\StudentDao.class
 com\springmvc\formvalidation\config\StudentConfig.class
+com\springmvc\formvalidation\config\HibernateConfiguration.class
 com\springmvc\formvalidation\controller\StudentController.class
